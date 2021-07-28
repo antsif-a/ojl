@@ -1,8 +1,8 @@
-package io.summetdev.ojl.graphics.opengl;
+package io.summetdev.ojl.graphics.gl;
 
 import dagger.Module;
 import dagger.*;
-import io.summetdev.ojl.graphics.opengl.impl.*;
+import io.summetdev.ojl.graphics.gl.impl.*;
 
 @Module
 public abstract class GLModule {

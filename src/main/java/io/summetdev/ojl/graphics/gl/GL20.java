@@ -1,4 +1,4 @@
-package io.summetdev.ojl.graphics.opengl;
+package io.summetdev.ojl.graphics.gl;
 
 import java.nio.*;
 

@@ -1,17 +1,18 @@
-package io.summetdev.ojl.graphics.opengl.impl;
+package io.summetdev.ojl.graphics.gl.impl;
 
 import org.lwjgl.opengl.*;
 
 import javax.inject.*;
 import java.nio.*;
 
-public class GL20Impl implements io.summetdev.ojl.graphics.opengl.GL20 {
+public class GL20Impl implements io.summetdev.ojl.graphics.gl.GL20 {
     private static ByteBuffer buffer = null;
     private static FloatBuffer floatBuffer = null;
     private static IntBuffer intBuffer = null;
 
     @Inject
-    public GL20Impl() {}
+    public GL20Impl() {
+    }
 
     private static void ensureBufferCapacity(int numBytes) {
         if (buffer == null || buffer.capacity() < numBytes) {
@@ -24,17 +25,17 @@ public class GL20Impl implements io.summetdev.ojl.graphics.opengl.GL20 {
     private static FloatBuffer toFloatBuffer(float[] v, int offset, int count) {
         ensureBufferCapacity(count << 2);
         return floatBuffer.clear()
-                .limit(count)
-                .put(v, offset, count)
-                .position(0);
+            .limit(count)
+            .put(v, offset, count)
+            .position(0);
     }
 
     private static IntBuffer toIntBuffer(int[] v, int offset, int count) {
         ensureBufferCapacity(count << 2);
         return intBuffer.clear()
-                .limit(count)
-                .put(v, offset, count)
-                .position(0);
+            .limit(count)
+            .put(v, offset, count)
+            .position(0);
     }
 
     @Override
@@ -299,7 +300,7 @@ public class GL20Impl implements io.summetdev.ojl.graphics.opengl.GL20 {
         else if (indices instanceof ByteBuffer bb && type == GL_UNSIGNED_BYTE)
             GL11.glDrawElements(mode, bb);
         else throw new RuntimeException("Can't use " + indices.getClass().getName()
-                    + " with this method. Use ShortBuffer or ByteBuffer instead");
+                + " with this method. Use ShortBuffer or ByteBuffer instead");
     }
 
     @Override
@@ -599,7 +600,7 @@ public class GL20Impl implements io.summetdev.ojl.graphics.opengl.GL20 {
             GL11.glReadPixels(x, y, width, height, format, type, (FloatBuffer) pixels);
         else
             throw new RuntimeException("Can't use " + pixels.getClass().getName()
-                    + " with this method. Use ByteBuffer, ShortBuffer, IntBuffer or FloatBuffer instead");
+                + " with this method. Use ByteBuffer, ShortBuffer, IntBuffer or FloatBuffer instead");
     }
 
     @Override
@@ -678,7 +679,7 @@ public class GL20Impl implements io.summetdev.ojl.graphics.opengl.GL20 {
         else if (pixels instanceof DoubleBuffer db)
             GL11.glTexImage2D(target, level, internalformat, width, height, border, format, type, db);
         else throw new RuntimeException("Can't use " + pixels.getClass().getName()
-                    + " with this method. Use ByteBuffer, ShortBuffer, IntBuffer, FloatBuffer or DoubleBuffer instead");
+                + " with this method. Use ByteBuffer, ShortBuffer, IntBuffer, FloatBuffer or DoubleBuffer instead");
     }
 
     @Override
@@ -715,7 +716,7 @@ public class GL20Impl implements io.summetdev.ojl.graphics.opengl.GL20 {
         else if (pixels instanceof DoubleBuffer db)
             GL11.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, db);
         else throw new RuntimeException("Can't use " + pixels.getClass().getName()
-                    + " with this method. Use ByteBuffer, ShortBuffer, IntBuffer, FloatBuffer or DoubleBuffer instead");
+                + " with this method. Use ByteBuffer, ShortBuffer, IntBuffer, FloatBuffer or DoubleBuffer instead");
     }
 
     @Override
@@ -934,8 +935,8 @@ public class GL20Impl implements io.summetdev.ojl.graphics.opengl.GL20 {
                     GL20.glVertexAttribPointer(indx, size, type, normalized, stride, ((ByteBuffer) buffer).asFloatBuffer());
                 default:
                     throw new RuntimeException("Can't use " + buffer.getClass().getName() + " with type " + type
-                            + " with this method. Use ByteBuffer and one of"
-                            + "GL_BYTE, GL_UNSIGNED_BYTE, GL_SHORT, GL_UNSIGNED_SHORT or GL_FLOAT for type.");
+                        + " with this method. Use ByteBuffer and one of"
+                        + "GL_BYTE, GL_UNSIGNED_BYTE, GL_SHORT, GL_UNSIGNED_SHORT or GL_FLOAT for type.");
             }
         } else if (buffer instanceof FloatBuffer) {
             if (type == GL_FLOAT) {

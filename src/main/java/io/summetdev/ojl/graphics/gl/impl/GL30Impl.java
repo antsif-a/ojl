@@ -1,14 +1,15 @@
-package io.summetdev.ojl.graphics.opengl.impl;
+package io.summetdev.ojl.graphics.gl.impl;
 
 import org.lwjgl.opengl.*;
 
 import javax.inject.*;
 import java.nio.*;
 
-public class GL30Impl extends GL20Impl implements io.summetdev.ojl.graphics.opengl.GL30 {
+public class GL30Impl extends GL20Impl implements io.summetdev.ojl.graphics.gl.GL30 {
 
     @Inject
-    public GL30Impl() {}
+    public GL30Impl() {
+    }
 
     @Override
     public void glReadBuffer(int mode) {
@@ -47,7 +48,7 @@ public class GL30Impl extends GL20Impl implements io.summetdev.ojl.graphics.open
         else if (pixels instanceof DoubleBuffer db)
             GL12.glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, db);
         else throw new RuntimeException("Can't use " + pixels.getClass().getName()
-                    + " with this method. Use ByteBuffer, ShortBuffer, IntBuffer, FloatBuffer or DoubleBuffer instead");
+                + " with this method. Use ByteBuffer, ShortBuffer, IntBuffer, FloatBuffer or DoubleBuffer instead");
     }
 
     @Override
@@ -70,7 +71,7 @@ public class GL30Impl extends GL20Impl implements io.summetdev.ojl.graphics.open
         else if (pixels instanceof DoubleBuffer db)
             GL12.glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, db);
         else throw new RuntimeException("Can't use " + pixels.getClass().getName()
-                    + " with this method. Use ByteBuffer, ShortBuffer, IntBuffer, FloatBuffer or DoubleBuffer instead");
+                + " with this method. Use ByteBuffer, ShortBuffer, IntBuffer, FloatBuffer or DoubleBuffer instead");
     }
 
     @Override

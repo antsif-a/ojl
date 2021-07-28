@@ -17,8 +17,8 @@ public class ApplicationConfigProcessor extends BaseProcessor {
 
     public Field getConfig() {
         List<Field> annotatedFields = findFieldsAnnotated(ApplicationConfig.class).stream()
-                .filter(f -> f.getType().isAssignableFrom(configType))
-                .collect(Collectors.toList());
+            .filter(f -> f.getType().isAssignableFrom(configType))
+            .collect(Collectors.toList());
 
         if (annotatedFields.size() > 1) {
             throw new IllegalStateException("Only one field should be marked as config");

@@ -1,12 +1,13 @@
 package io.summetdev.ojl.test;
 
 import io.summetdev.ojl.boot.*;
+import org.junit.*;
 import org.lwjgl.opengl.*;
 
 public class ConfigTest extends Application {
 
-    public static void main(String[] args) {
-        new ConfigTest();
+    @Test
+    public void main() {
     }
 
     @Override
@@ -23,7 +24,7 @@ public class ConfigTest extends Application {
     @Override
     protected Config getConfig() {
         return new ConfigBuilder()
-                .title("Config Test").width(700).height(500)
-                .build();
+            .title("Config Test").width(700).height(500)
+            .build();
     }
 }

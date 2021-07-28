@@ -6,6 +6,10 @@ import java.nio.file.*;
 import static org.lwjgl.opengl.GL30C.*;
 
 public class Shader extends GLStruct {
+    public Shader(int id) {
+        super(id);
+    }
+
     public static Shader create(File vertexShader, File fragmentShader) {
         try {
             return create(Files.readString(vertexShader.toPath()), Files.readString(fragmentShader.toPath()));
@@ -44,10 +48,6 @@ public class Shader extends GLStruct {
         }
 
         return shaderId;
-    }
-
-    public Shader(int id) {
-        super(id);
     }
 
     public void use() {

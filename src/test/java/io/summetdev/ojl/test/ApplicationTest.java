@@ -1,9 +1,9 @@
 package io.summetdev.ojl.test;
 
-import io.summetdev.ojl.*;
-import io.summetdev.ojl.graphics.*;
-import io.summetdev.ojl.input.*;
 import io.summetdev.ojl.graphics.BufferObject.*;
+import io.summetdev.ojl.graphics.*;
+import io.summetdev.ojl.graphics.glfw.*;
+import io.summetdev.ojl.input.*;
 import org.junit.*;
 
 import java.io.*;
@@ -12,15 +12,13 @@ import static org.lwjgl.opengl.GL33C.*;
 
 public class ApplicationTest {
     private final float[] vertices = new float[]{
-            -1.0f, -1.0f, 0.0f,
-            1.0f, -1.0f, 0.0f,
-            0.0f, 1.0f, 0.0f,
+        -1.0f, -1.0f, 0.0f,
+        1.0f, -1.0f, 0.0f,
+        0.0f, 1.0f, 0.0f,
     };
-
+    private final File shadersDir = new File("src/test/resources/shaders");
     private Context context;
     private Window window;
-
-    private final File shadersDir = new File("src/test/resources/shaders");
     private Shader shader;
     private VertexArrayObject vertexArray;
     private VertexBufferObject vertexBuffer;
@@ -39,7 +37,7 @@ public class ApplicationTest {
         context.windowHint(Hint.VersionMinor, 3);
         context.windowHint(Hint.ForwardCompatible, true);
 
-        window = context.createWindow(700, 500, "Window");
+        window = context.createWindow(700, 500, "Application Test");
         window.makeContextCurrent();
         window.setEventProcessor(new EventProcessorAdapter() {
             @Override

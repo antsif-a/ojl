@@ -1,10 +1,8 @@
-package io.summetdev.ojl.window;
+package io.summetdev.ojl.graphics.glfw.impl;
 
 import dagger.assisted.*;
-import io.summetdev.ojl.*;
+import io.summetdev.ojl.graphics.glfw.*;
 import org.lwjgl.system.*;
-
-import javax.inject.*;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -13,8 +11,8 @@ public class MonitorImpl extends Struct implements Monitor {
     private static final int[] tmpi = new int[1];
     private static final float[] tmpf = new float[1];
 
-    @Inject
-    public MonitorImpl(long address) {
+    @AssistedInject
+    public MonitorImpl(@Assisted long address) {
         super(address, null);
     }
 

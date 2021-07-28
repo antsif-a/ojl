@@ -1,4 +1,4 @@
-package io.summetdev.ojl;
+package io.summetdev.ojl.graphics.glfw;
 
 public interface VideoMode {
     int width();

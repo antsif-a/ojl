@@ -1,13 +1,13 @@
 package io.summetdev.ojl.test;
 
 import dagger.*;
-import io.summetdev.ojl.*;
-import io.summetdev.ojl.graphics.opengl.*;
+import io.summetdev.ojl.graphics.gl.*;
+import io.summetdev.ojl.graphics.glfw.*;
 import org.junit.*;
 
 import javax.inject.*;
 
-import static io.summetdev.ojl.graphics.opengl.GL20.*;
+import static io.summetdev.ojl.graphics.gl.GL20.*;
 
 @Singleton
 @Component(modules = {GLModule.class, Context.ContextModule.class})
@@ -26,7 +26,7 @@ public class GLDependencyTest {
     @Before
     public void setup() {
         DaggerTestComponent.create()
-                .inject(this);
+            .inject(this);
     }
 
     @Test

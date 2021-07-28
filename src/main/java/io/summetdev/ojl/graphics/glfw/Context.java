@@ -1,8 +1,8 @@
-package io.summetdev.ojl;
+package io.summetdev.ojl.graphics.glfw;
 
-import dagger.*;
 import dagger.Module;
-import io.summetdev.ojl.window.*;
+import dagger.*;
+import io.summetdev.ojl.graphics.glfw.impl.*;
 import org.lwjgl.*;
 
 import javax.inject.*;
@@ -11,11 +11,12 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
 @Singleton
-public final class Context {
+public class Context {
     private boolean isInitialized = false;
 
     @Inject
-    public Context() {}
+    public Context() {
+    }
 
     public void init() {
         if (!glfwInit()) {
@@ -104,9 +105,9 @@ public final class Context {
         }
 
         long address = glfwCreateWindow(
-                width, height, title,
-                monitor == null ? NULL : monitor.getId(),
-                share == null ? NULL : share.getId()
+            width, height, title,
+            monitor == null ? NULL : monitor.getId(),
+            share == null ? NULL : share.getId()
         );
 
         if (address == NULL) {
@@ -119,7 +120,8 @@ public final class Context {
     @Module
     public static class ContextModule {
 
-        @Provides @Singleton
+        @Provides
+        @Singleton
         public Context provideContext() {
             return new Context();
         }

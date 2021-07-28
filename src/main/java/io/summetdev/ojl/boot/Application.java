@@ -1,8 +1,8 @@
 package io.summetdev.ojl.boot;
 
-import io.summetdev.ojl.*;
 import io.summetdev.ojl.annotation.*;
 import io.summetdev.ojl.annotation.internal.*;
+import io.summetdev.ojl.graphics.glfw.*;
 
 public abstract class Application implements LifecycleListener {
     protected Application() {

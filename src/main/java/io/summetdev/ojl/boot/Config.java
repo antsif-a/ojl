@@ -3,7 +3,8 @@ package io.summetdev.ojl.boot;
 import io.summetdev.ojl.annotation.internal.*;
 import org.immutables.value.*;
 
-@Value.Immutable @Builder
+@Value.Immutable
+@Builder
 public interface Config {
     /**
      * @return title of the window

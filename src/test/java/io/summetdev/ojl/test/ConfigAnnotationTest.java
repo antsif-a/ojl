@@ -1,27 +1,19 @@
 package io.summetdev.ojl.test;
 
-import io.summetdev.ojl.*;
 import io.summetdev.ojl.annotation.*;
 import io.summetdev.ojl.boot.*;
+import org.junit.*;
 import org.lwjgl.opengl.*;
-
-import javax.inject.*;
 
 public class ConfigAnnotationTest implements LifecycleListener {
     @ApplicationConfig
     Config config = new ConfigBuilder()
-            .title("Config Annotation Test").width(700).height(500)
-            .build();
+        .title("Config Annotation Test").width(700).height(500)
+        .build();
 
-    private final Window mainWindow;
-
-    @Inject
-    public ConfigAnnotationTest(Window mainWindow) {
-        this.mainWindow = mainWindow;
-    }
-
-    public static void main(String[] args) {
-        Application.run(ConfigAnnotationTest.class);
+    @Test
+    public void main() {
+        Application.run(getClass());
     }
 
     @Override

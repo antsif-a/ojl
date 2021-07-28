@@ -1,5 +1,7 @@
-package io.summetdev.ojl;
+package io.summetdev.ojl.graphics.glfw;
 
+import dagger.assisted.*;
+import io.summetdev.ojl.graphics.glfw.impl.*;
 import io.summetdev.ojl.input.*;
 
 import java.nio.*;
@@ -12,9 +14,6 @@ public interface Window {
 
     // region window control
 
-    /**
-     *
-     */
     void show();
 
     void hide();
@@ -74,4 +73,9 @@ public interface Window {
     // endregion
 
     void setEventProcessor(EventProcessor processor);
+
+    @AssistedFactory
+    interface Factory {
+        WindowImpl create(long address);
+    }
 }

@@ -1,4 +1,4 @@
-package io.summetdev.ojl;
+package io.summetdev.ojl.graphics.glfw;
 
 import static org.lwjgl.glfw.GLFW.*;
 

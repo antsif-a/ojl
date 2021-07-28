@@ -1,11 +1,11 @@
-package io.summetdev.ojl.window;
+package io.summetdev.ojl.graphics.glfw.impl;
 
-import io.summetdev.ojl.*;
+import dagger.assisted.*;
+import io.summetdev.ojl.graphics.glfw.*;
 import io.summetdev.ojl.input.*;
 import org.lwjgl.glfw.*;
 import org.lwjgl.system.*;
 
-import javax.inject.*;
 import java.nio.*;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -15,8 +15,8 @@ import static org.lwjgl.opengl.GL.*;
 public class WindowImpl extends Struct implements Window {
     private static final int[] tmpi = new int[1];
 
-    @Inject
-    public WindowImpl(long address) {
+    @AssistedInject
+    public WindowImpl(@Assisted long address) {
         super(address, null);
     }
 

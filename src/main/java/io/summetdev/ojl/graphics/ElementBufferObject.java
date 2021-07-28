@@ -4,12 +4,12 @@ import static org.lwjgl.opengl.GL15C.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
 public class ElementBufferObject extends BufferObject {
-    public static ElementBufferObject create() {
-        return new ElementBufferObject(glGenBuffers());
-    }
-
     public ElementBufferObject(int id) {
         super(id, BufferType.ElementArrayBuffer.code);
+    }
+
+    public static ElementBufferObject create() {
+        return new ElementBufferObject(glGenBuffers());
     }
 
     public void drawElements(BeginMode mode, int count, DataType indicesType, long offset) {

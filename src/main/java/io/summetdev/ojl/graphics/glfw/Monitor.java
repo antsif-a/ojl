@@ -1,4 +1,7 @@
-package io.summetdev.ojl;
+package io.summetdev.ojl.graphics.glfw;
+
+import dagger.assisted.*;
+import io.summetdev.ojl.graphics.glfw.impl.*;
 
 public interface Monitor {
     long getId();
@@ -30,4 +33,9 @@ public interface Monitor {
     VideoMode getVideoMode();
 
     // endregion
+
+    @AssistedFactory
+    interface Factory {
+        MonitorImpl create(long address);
+    }
 }
